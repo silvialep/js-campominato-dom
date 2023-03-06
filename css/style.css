@@ -81,6 +81,10 @@ header {
     background-color: cornflowerblue;
 }
 
+.disabled {
+    pointer-events: none;
+}
+
 #btn-container {
     display: flex;
     justify-content: center;

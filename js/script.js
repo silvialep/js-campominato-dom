@@ -1,6 +1,9 @@
 
 
 // creo variabile degli elementi HTML che andrò a manipolare
+
+let pageContEl = document.getElementById('page-container');
+
 let gridContEl = document.getElementById('grid-container');
 let gridEl = document.getElementById('grid');
 let buttonCreate = document.getElementById('btn-create');
@@ -13,7 +16,7 @@ gridEl.style.display = 'none';
 
 // creo array per i 16 numeri casuali a cui associare le bombe
 let bombs = [];
-console.log(bombs);
+// console.log(bombs);
 
 
 // creo evento al click per generare la griglia con le celle
@@ -30,11 +33,12 @@ buttonCreate.addEventListener('click', function () {
         hardGrid(gridEl, 50);
     }
 
-    // bombs.push(1);
-    // console.log(generateNumber.value);
-    // console.log(bombs[0]);
-
 })
+
+
+
+
+
 
 function easyGrid(container, maxCell) {
     for (i = 1; i < maxCell; i++) {
@@ -44,12 +48,13 @@ function easyGrid(container, maxCell) {
         newCell.classList.add('cell-easy');
         generateBombs(bombs, maxCell);
         newCell.addEventListener('click', function () {
-            newCell.classList.toggle('active');
+            newCell.classList.add('active');
             console.log(newCell.innerText);
             for(cont = 0; cont < bombs.length; cont++) {
                 if(newCell.innerText == bombs[cont]) {
                     newCell.classList.toggle('active');
                     newCell.classList.add('cell-bomb');
+                    alert('Hai perso!', pageContEl.classList.add('disabled'));
                 }
             }
         })
@@ -65,18 +70,17 @@ function mediumGrid(container, maxCell) {
         newCell.classList.add('cell-medium');
         generateBombs(bombs, maxCell);
         newCell.addEventListener('click', function () {
-            newCell.classList.toggle('active');
+            newCell.classList.add('active');
             console.log(newCell.innerText);
             for (cont = 0; cont < bombs.length; cont++) {
                 if (newCell.innerText == bombs[cont]) {
                     newCell.classList.toggle('active');
                     newCell.classList.add('cell-bomb');
+                    alert('Hai perso!', pageContEl.classList.add('disabled'));
                 }
             }
         })
     }
-    generateBombs(bombs, maxCell);
-
 }
 
 function hardGrid(container, maxCell) {
@@ -87,17 +91,17 @@ function hardGrid(container, maxCell) {
         newCell.classList.add('cell-hard');
         generateBombs(bombs, maxCell);
         newCell.addEventListener('click', function () {
-            newCell.classList.toggle('active');
+            newCell.classList.add('active');
             console.log(newCell.innerText);
             for (cont = 0; cont < bombs.length; cont++) {
                 if (newCell.innerText == bombs[cont]) {
                     newCell.classList.toggle('active');
                     newCell.classList.add('cell-bomb');
+                    alert('Hai perso!', pageContEl.classList.add('disabled'));
                 }
             }
         })
     }
-    generateBombs(bombs, maxCell);
 }
 
 
