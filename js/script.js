@@ -69,14 +69,12 @@ function easyGrid(container, maxCell) {
         // raggruppo in un array tutte le celle con la classe bomba
         let cellBombs = document.querySelectorAll('.cell-bomb');
 
-        function displayRed(array) {
-            for (a = 0; a < array.length; a++) {
-                array[a].style.backgroundColor = 'red';
-            }
-        }
+
+        
 
         // creo l'evento al click che colora di azzurro le celle cliccate
         newCell.addEventListener('click', function () {
+            let gameOver = false;
             newCell.classList.add('active');
             console.log(newCell.innerText);
 
@@ -89,14 +87,13 @@ function easyGrid(container, maxCell) {
                 // se la cella cliccata è una bomba il gioco termina e stampo il messaggio di sconfitta
                 if (newCell.innerText == bombs[cont]) {
                     newCell.classList.toggle('active');
-                    // newCell.style.backgroundColor = 'red';
                     messageEl.style.opacity = '1';
                     messageText.innerText = `Hai perso! il tuo punteggio è: ${activeCells.length - 1}`;
                     pageContEl.classList.add('disabled');
                 }
             }
             
-            displayRed(cellBombs);
+
             
             // se le celle attive raggiungono il numero massimo stampo il messaggio di vittoria
             if (activeCells.length == maxCell - 1 - bombs.length) {
@@ -104,7 +101,11 @@ function easyGrid(container, maxCell) {
                 messageText.innerText = `Hai vinto!`;
                 pageContEl.classList.add('disabled');
             }
+            
+            displayRed(cellBombs);
+            
         })
+
 
     }
 }
@@ -207,6 +208,12 @@ function hardGrid(container, maxCell) {
 
 
 
+function displayRed(array) {
+    for (a = 0; a < array.length; a++) {
+        array[a].style.backgroundColor = 'red';
+    }
+    return array;
+}
 
 
 
