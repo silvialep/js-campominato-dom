@@ -46,6 +46,12 @@ function easyGrid(container, maxCell) {
         newCell.addEventListener('click', function () {
             newCell.classList.toggle('active');
             console.log(newCell.innerText);
+            for(cont = 0; cont < bombs.length; cont++) {
+                if(newCell.innerText == bombs[cont]) {
+                    newCell.classList.toggle('active');
+                    newCell.classList.add('cell-bomb');
+                }
+            }
         })
     }
 
@@ -57,9 +63,16 @@ function mediumGrid(container, maxCell) {
         container.append(newCell);
         newCell.innerText = i;
         newCell.classList.add('cell-medium');
+        generateBombs(bombs, maxCell);
         newCell.addEventListener('click', function () {
             newCell.classList.toggle('active');
             console.log(newCell.innerText);
+            for (cont = 0; cont < bombs.length; cont++) {
+                if (newCell.innerText == bombs[cont]) {
+                    newCell.classList.toggle('active');
+                    newCell.classList.add('cell-bomb');
+                }
+            }
         })
     }
     generateBombs(bombs, maxCell);
@@ -72,9 +85,16 @@ function hardGrid(container, maxCell) {
         container.append(newCell);
         newCell.innerText = i;
         newCell.classList.add('cell-hard');
+        generateBombs(bombs, maxCell);
         newCell.addEventListener('click', function () {
             newCell.classList.toggle('active');
             console.log(newCell.innerText);
+            for (cont = 0; cont < bombs.length; cont++) {
+                if (newCell.innerText == bombs[cont]) {
+                    newCell.classList.toggle('active');
+                    newCell.classList.add('cell-bomb');
+                }
+            }
         })
     }
     generateBombs(bombs, maxCell);

@@ -73,6 +73,10 @@ header {
     align-items: center;
 }
 
+.cell-bomb {
+    background-color: red;
+}
+
 .active {
     background-color: cornflowerblue;
 }
