@@ -19,6 +19,7 @@ header {
 
 #grid-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -31,8 +32,8 @@ header {
 #grid {
     display: flex;
     flex-wrap: wrap;
-    width: 600px;
-    height: 600px;
+    width: 700px;
+    height: 700px;
 }
 
 .img-cont {
@@ -73,9 +74,6 @@ header {
     align-items: center;
 }
 
-.cell-bomb {
-    background-color: red;
-}
 
 .active {
     background-color: cornflowerblue;
@@ -94,6 +92,14 @@ header {
 
 .btn {
     padding: 0 30px;
+}
+
+#final-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    padding: 50px;
 }
 
 footer {
