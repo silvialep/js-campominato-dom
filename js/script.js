@@ -46,46 +46,66 @@ buttonCreate.addEventListener('click', function () {
 
 
 
-
+// creo funzione per generare la griglia con la difficoltà facile
 function easyGrid(container, maxCell) {
+    // genero le bombe casuali
     generateBombs(bombs, maxCell);
     console.log(bombs);
 
+    // genero la griglia
     for (i = 1; i < maxCell; i++) {
         let newCell = document.createElement('div');
         container.append(newCell);
         newCell.innerText = i;
         newCell.classList.add('cell-easy');
+
+        // aggiungo la stessa classe a tutte le bombe - per poi visualizzarle tutte insieme quando la partita termina
         for (cont = 0; cont < bombs.length; cont++) {
             if (newCell.innerText == bombs[cont]) {
                 newCell.classList.add('cell-bomb');
             }
         }
+
+        // raggruppo in un array tutte le celle con la classe bomba
         let cellBombs = document.querySelectorAll('.cell-bomb');
 
+        function displayRed(array) {
+            for (a = 0; a < array.length; a++) {
+                array[a].style.backgroundColor = 'red';
+            }
+        }
+
+        // creo l'evento al click che colora di azzurro le celle cliccate
         newCell.addEventListener('click', function () {
             newCell.classList.add('active');
             console.log(newCell.innerText);
+
+            // creo un array per tutte le celle attive che mi serve per contarle e dare il punteggio
             let activeCells = document.querySelectorAll('.active');
 
+
+            // creo il ciclo che controlla se la cella cliccata è una bomba
             for (cont = 0; cont < bombs.length; cont++) {
+                // se la cella cliccata è una bomba il gioco termina e stampo il messaggio di sconfitta
                 if (newCell.innerText == bombs[cont]) {
                     newCell.classList.toggle('active');
                     // newCell.style.backgroundColor = 'red';
-                    for (a = 0; a < cellBombs.length; a++) {
-                        cellBombs[a].style.backgroundColor = 'red';
-                    }
                     messageEl.style.opacity = '1';
                     messageText.innerText = `Hai perso! il tuo punteggio è: ${activeCells.length - 1}`;
                     pageContEl.classList.add('disabled');
                 }
             }
+            
+            displayRed(cellBombs);
+            
+            // se le celle attive raggiungono il numero massimo stampo il messaggio di vittoria
             if (activeCells.length == maxCell - 1 - bombs.length) {
                 messageEl.style.opacity = '1';
                 messageText.innerText = `Hai vinto!`;
                 pageContEl.classList.add('disabled');
             }
         })
+
     }
 }
 
@@ -148,7 +168,7 @@ function mediumGrid(container, maxCell) {
 function hardGrid(container, maxCell) {
     generateBombs(bombs, maxCell);
     console.log(bombs);
-    
+
     for (i = 1; i < maxCell; i++) {
         let newCell = document.createElement('div');
         container.append(newCell);
@@ -175,9 +195,6 @@ function hardGrid(container, maxCell) {
                     pageContEl.classList.add('disabled');
                 }
             }
-            for (a = 0; a < cellBombs.length; a++) {
-                cellBombs[a].style.backgroundColor = 'red';
-            }
             if (activeCells.length == maxCell - 1 - bombs.length) {
                 messageEl.style.opacity = '1';
                 messageText.innerText = `Hai vinto!`;
@@ -186,6 +203,7 @@ function hardGrid(container, maxCell) {
         })
     }
 }
+
 
 
 

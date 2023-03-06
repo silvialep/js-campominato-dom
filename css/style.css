@@ -74,6 +74,9 @@ header {
     align-items: center;
 }
 
+.display-red {
+    background-color: red;
+}
 
 .active {
     background-color: cornflowerblue;
