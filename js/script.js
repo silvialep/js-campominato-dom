@@ -191,6 +191,9 @@ function hardGrid(container, maxCell) {
                 if (newCell.innerText == bombs[cont]) {
                     newCell.classList.toggle('active');
                     newCell.style.backgroundColor = 'red';
+                    for (a = 0; a < cellBombs.length; a++) {
+                        cellBombs[a].style.backgroundColor = 'red';
+                    }
                     messageEl.style.opacity = '1';
                     messageText.innerText = `Hai perso! il tuo punteggio è: ${activeCells.length - 1}`;
                     pageContEl.classList.add('disabled');
